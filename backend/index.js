@@ -7,7 +7,13 @@ const cors = require("cors");
 
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors("http://localhost:3001"))
+app.use(
+    cors({
+        origin: ["http://localhost:3001"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
 
 mongoose.connect("mongodb+srv://dvkrishna142000:FOJE6srGniwtzf56@cluster0.vy30i.mongodb.net/EventLoggingSystem?retryWrites=true&w=majority&appName=Cluster0")
     .then(() => {
